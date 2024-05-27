@@ -13,6 +13,9 @@ import tech.ian.gestao_vagas.modules.company.dto.AuthCompanyDto;
 import tech.ian.gestao_vagas.modules.company.repositories.CompanyRepository;
 import com.auth0.jwt.JWT;
 
+import java.time.Duration;
+import java.time.Instant;
+
 @Service
 public class AuthCompanyUseCase {
     @Value("${security.token.secret}")
@@ -40,8 +43,11 @@ public class AuthCompanyUseCase {
         // Se for igual -> Gerar o token
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         var token = JWT.create().withIssuer("javagas")
+                .withExpiresAt(Instant.now().plus(Duration.ofHours(2)))
                 .withSubject(company.getId().toString())
                 .sign(algorithm);
+
+
         return token;
     }
 }
