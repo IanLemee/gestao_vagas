@@ -1,5 +1,6 @@
 package tech.ian.gestao_vagas.modules.candidate.useCases;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tech.ian.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDto;
@@ -10,6 +11,7 @@ import java.util.UUID;
 @Service
 public class ProfileCandidateUseCase {
 
+    @Autowired
     private CandidateRepository repository;
 
     public ProfileCandidateResponseDto execute(UUID idCandidate) {
