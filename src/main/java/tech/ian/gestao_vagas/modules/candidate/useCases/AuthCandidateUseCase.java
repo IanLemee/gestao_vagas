@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import tech.ian.gestao_vagas.modules.candidate.dto.AuthCandidateRequestDto;
 import tech.ian.gestao_vagas.modules.candidate.dto.AuthCandidateResponseDto;
-import tech.ian.gestao_vagas.modules.candidate.repositiry.CandidateRepository;
+import tech.ian.gestao_vagas.modules.candidate.repository.CandidateRepository;
 
 import javax.naming.AuthenticationException;
 import java.time.Duration;

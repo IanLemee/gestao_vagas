@@ -5,38 +5,38 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import tech.ian.gestao_vagas.providers.JWTProvider;
+import tech.ian.gestao_vagas.providers.JWTCandidateProvider;
 
 import java.io.IOException;
-import java.util.Collections;
 
 @Component
-public class SecurityFilter extends OncePerRequestFilter {
+public class SecurityCandidateFilter extends OncePerRequestFilter {
 
     @Autowired
-    private JWTProvider jwtProvider;
+    private JWTCandidateProvider provider;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        // SecurityContextHolder.getContext().setAuthentication(null);
-        String header = request.getHeader("Authorization");
 
 
-        if (request.getRequestURI().startsWith("/company")) {
+        SecurityContextHolder.getContext().setAuthentication(null);
+        String header = request .getHeader("Authorization");
+
+        if (request.getRequestURI().startsWith("/candidate")) {
             if (header != null) {
-                var subjectToken = this.jwtProvider.validateToken(header);
-                if (subjectToken.isEmpty()) {
+                var token = this.provider.validadeteToken(header);
+
+                if (token == null) {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     return;
                 }
-                request.setAttribute("company_id", subjectToken);
-                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(subjectToken, null, Collections.emptyList());
-                SecurityContextHolder.getContext().setAuthentication(auth);
 
+                request.setAttribute("candidate_id", token.getSubject());
+                System.out.println(" ============TOKEN=========== ");
+                System.out.println(token);
             }
         }
 

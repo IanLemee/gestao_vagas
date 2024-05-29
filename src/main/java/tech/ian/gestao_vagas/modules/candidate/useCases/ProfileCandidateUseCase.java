@@ -3,7 +3,7 @@ package tech.ian.gestao_vagas.modules.candidate.useCases;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tech.ian.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDto;
-import tech.ian.gestao_vagas.modules.candidate.repositiry.CandidateRepository;
+import tech.ian.gestao_vagas.modules.candidate.repository.CandidateRepository;
 
 import java.util.UUID;
 

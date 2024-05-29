@@ -3,13 +3,9 @@ package tech.ian.gestao_vagas.modules.candidate.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.ian.gestao_vagas.exceptions.UserFoundException;
 import tech.ian.gestao_vagas.modules.candidate.entity.CandidateEntity;
-import tech.ian.gestao_vagas.modules.candidate.repositiry.CandidateRepository;
 import tech.ian.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;
 import tech.ian.gestao_vagas.modules.candidate.useCases.ProfileCandidateUseCase;
 

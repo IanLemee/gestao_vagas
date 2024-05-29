@@ -1,4 +1,4 @@
-package tech.ian.gestao_vagas.modules.candidate.repositiry;
+package tech.ian.gestao_vagas.modules.candidate.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import tech.ian.gestao_vagas.modules.candidate.entity.CandidateEntity;
